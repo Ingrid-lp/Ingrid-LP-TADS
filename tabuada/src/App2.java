@@ -6,7 +6,7 @@ public class App2 {
 
         int valor, tabu;
 
-        System.out.println("Infome um valor para multiplicarmos: ");
+        System.out.println("Informe um valor para multiplicarmos: ");
         valor = teclado.nextInt();
 
         System.out.println("Tabuada do número " + valor);

@@ -8,7 +8,7 @@ public class App
 
         int valor, tabu;
 
-        System.out.println("Infome um valor para multiplicarmos: ");
+        System.out.println("Informe um valor para multiplicarmos: ");
         valor = teclado.nextInt();
 
         for (int div = 1; div <= 10; div++)
