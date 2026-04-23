@@ -13,7 +13,7 @@ public class App
 
         while(num >= 0)
         {
-            System.out.println(" " + num);
+            System.out.print(num + " , ");
             num = num - 1;
         }
 
