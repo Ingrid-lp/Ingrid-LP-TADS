@@ -27,7 +27,7 @@ public class App
 
                 nota100 = conta / 100;
                 conta = conta % 100;
-
+   
                 nota50 = conta / 50;
                 conta = conta % 50;
 
@@ -37,10 +37,27 @@ public class App
                 nota10 = conta / 10;
 
                 System.out.println("Notas entregues:");
-                System.out.println("Notas de 100: " + nota100);
-                System.out.println("Notas de 50: " + nota50);
-                System.out.println("Notas de 20: " + nota20);
-                System.out.println("Notas de 10: " + nota10);
+
+                if(nota100 > 0)
+                {
+                    System.out.println("Notas de 100: " + nota100);
+                }
+                
+                if(nota50 > 0)
+                {
+                    System.out.println("Notas de 50: " + nota50);
+                }
+                
+                if(nota20 > 0)
+                {
+                    System.out.println("Notas de 20: " + nota20);
+                }
+                
+                if(nota10 > 0)
+                {
+                    System.out.println("Notas de 10: " + nota10);
+                } 
+                
             }
 
             else if(saque < 10 || saque > 500)
