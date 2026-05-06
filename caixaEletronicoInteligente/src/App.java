@@ -36,7 +36,7 @@ public class App
 
                 nota10 = conta / 10;
 
-                System.out.println("Notas entregues:");
+                System.out.println("Notas entregues");
 
                 if(nota100 > 0)
                 {
@@ -56,8 +56,9 @@ public class App
                 if(nota10 > 0)
                 {
                     System.out.println("Notas de 10: " + nota10);
-                } 
+                }
                 
+           
             }
 
             else if(saque < 10 || saque > 500)
