@@ -1,40 +1,37 @@
+
 import java.util.Scanner;
 
-public class IdosoMenu 
-{
-    public static void main(String[] args) 
-    {
+public class IdosoMenu {
+
+    public static void main(String[] args) {
         char op;
 
         imprimeBanner();
 
-        do 
-        {
+        do {
             op = menuEscolha();
 
-        }while(op!='g');
+        } while (op != 'g');
     }
 
-    public static char menuEscolha() 
-    {
+    public static char menuEscolha() {
         Scanner teclado = new Scanner(System.in);
 
         char opcao;
 
-        System.out.println("a. verificar entrada em ônibus \n"+
-                           "b. calcular meia entrada \n"+
-                           "c. calcular prestação de consignado \n"+
-                           "d. calcular sua renda anual \n"+
-                           "e. desconto em farmácia \n"+
-                           "f. posso emprestar dinheiro?\n"+
-                           "g. encerrar programa");
+        System.out.println("a. verificar entrada em ônibus \n"
+                + "b. calcular meia entrada \n"
+                + "c. calcular prestação de consignado \n"
+                + "d. calcular sua renda anual \n"
+                + "e. desconto em farmácia \n"
+                + "f. posso emprestar dinheiro?\n"
+                + "g. encerrar programa");
 
         System.out.print("Digite sua opção:");
 
         opcao = teclado.next().charAt(0);
 
-        switch (opcao) 
-        {
+        switch (opcao) {
             case 'a':
 
                 System.out.println("Qual ano nasceu?");
@@ -51,57 +48,56 @@ public class IdosoMenu
                 break;
 
             case 'c':
-                
+
                 System.out.println("Informe o valor, juros e a quantidade de parcelas do consignado: ");
-                calculaConsig(teclado.nextDouble(), teclado.nextDouble(),teclado.nextInt());
+                calculaConsig(teclado.nextDouble(), teclado.nextDouble(), teclado.nextInt());
                 imprimeConsig();
                 imprimeBanner();
                 break;
 
             case 'd':
-            
+
                 System.out.println("Qual o valor do seu salário mensal?");
                 calculaRenda(teclado.nextDouble());
                 break;
 
             case 'e':
-            
+
                 System.out.println("Qual a sua idade, valor da compra e a porcentagem de desconto? ");
                 calcFarmacia(teclado.nextInt(), teclado.nextDouble(), teclado.nextDouble());
                 break;
 
             case 'f':
-                
+
                 System.out.println("Bora ver se você pode emprestar dinheiro!!");
                 System.out.println("Informe o valor do seu salário mensal e o valor da parcela do consignado: ");
                 verifica(teclado.nextDouble(), teclado.nextDouble());
                 break;
             // faltam os outros cases
             default:
-
-                System.out.println("* Obrigado e sigo à disposição! *");
+                if (opcao != 'g') {
+                    System.out.println("Opção inválida! Tente novamente.");
+                } else {
+                    System.out.println("* Obrigado e sigo à disposição! *");
+                }
                 break;
         }
         return opcao;
     }
 
-    public static void verificaOnibus(int AnoNasc)
-    {
+    public static void verificaOnibus(int AnoNasc) {
         int calc;
 
         calc = 2026 - AnoNasc;
 
         if (calc >= 65) {
             System.out.println("Você é idoso, pode entrar pela porta de trás do ônibus!");
-        }
-
-        else {
+        } else {
             System.out.println("Você não é idoso, entre pela porta da frente!");
         }
     }
-    
-    public static void calculaEntrada(int idade, double ingresso)
-    {
+
+    public static void calculaEntrada(int idade, double ingresso) {
         double calc;
 
         if (idade >= 65) {
@@ -118,9 +114,7 @@ public class IdosoMenu
             System.out.println("|| ENTRADA: MEIA                  ||");
             System.out.println("|| STATUS : É VEIO                ||");
             System.out.println("====================================");
-        }
-
-        else {
+        } else {
             System.out.println("Você não é idoso, a sua entrada é inteira!");
             System.out.println("O valor da sua entrada é: " + ingresso);
 
@@ -133,9 +127,8 @@ public class IdosoMenu
             System.out.println("====================================");
         }
     }
-    
-    public static void calculaConsig(double valor, double  juros, int parcelas)
-    {
+
+    public static void calculaConsig(double valor, double juros, int parcelas) {
         double prestacao;
 
         prestacao = (valor + (valor * juros / 100)) / parcelas;
@@ -143,8 +136,7 @@ public class IdosoMenu
         System.out.println("O valor de cada prestação será de: " + prestacao);
     }
 
-    public static double calculaRenda(double salario) 
-    {
+    public static double calculaRenda(double salario) {
         double calc;
 
         calc = salario * 12 + salario;
@@ -154,17 +146,14 @@ public class IdosoMenu
         return calc;
     }
 
-    public static double calcFarmacia(int idade, double valor, double desconto)
-    {
+    public static double calcFarmacia(int idade, double valor, double desconto) {
         double calc;
 
         if (idade >= 65) {
             calc = valor - (valor * desconto / 100);
 
             System.out.println("Você é idoso! O valor final com o desconto final foi de: " + calc);
-        }
-
-        else {
+        } else {
             calc = valor;
 
             System.out.println("Você não é idoso! O valor final sem desconto é de: " + valor);
@@ -173,30 +162,31 @@ public class IdosoMenu
         return calc;
     }
 
-    public static boolean verifica(double salario, double  parcelas)
-    {
+    public static boolean verifica(double salario, double parcelas) {
 
         if (parcelas <= (salario * 35 / 100)) {
             System.out.println("Você pode emprestar!!");
             return true;
-        }
-
-        else {
+        } else {
             System.out.println("Você não pode emprestar!");
             return false;
         }
 
     }
 
-    public static void imprimeBanner() 
-    {
+    //peguei essa ideia na internet
+    public static void limparTela() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public static void imprimeBanner() {
         System.out.println("╔══════════════════════════════╗");
         System.out.println("║         MENU DO VEIO         ║");
         System.out.println("╚══════════════════════════════╝");
     }
 
-    public static void imprimeOnibus()
-    {
+    public static void imprimeOnibus() {
         System.out.println("╔══════════════════════════════════════╗");
         System.out.println("║      ________________________        ║");
         System.out.println("║  ___/|[][][][][][][][][][]|\\___      ║");
@@ -205,8 +195,7 @@ public class IdosoMenu
         System.out.println("╚══════════════════════════════════════╝");
     }
 
-    public static void imprimeConsig()
-    {
+    public static void imprimeConsig() {
         System.out.println("════════════════════════════════════");
         System.out.println("║          CONSIGNADO              ║");
         System.out.println("════════════════════════════════════");
