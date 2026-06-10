@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class IdosoMenu {
@@ -32,7 +31,7 @@ public class IdosoMenu {
         opcao = teclado.next().charAt(0);
 
         switch (opcao) {
-            case 'a':
+            case 'a':                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 
                 System.out.println("Qual ano nasceu?");
                 verificaOnibus(teclado.nextInt());
