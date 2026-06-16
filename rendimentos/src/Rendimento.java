@@ -86,7 +86,7 @@ public class Rendimento
 
             case 'c':
                 aplicacao = "CRIPTO"; // aleatório entre 2 e 8% ao mês
-                juros = (Math.random() * 6) + 2;
+                juros = (Math.random() * 6) + 2; // me inspirei em um video do tutube
                 break;
 
             case 'd':
