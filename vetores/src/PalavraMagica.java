@@ -1,5 +1,14 @@
 import java.util.Scanner;
 
+/*Entrada: Leia uma palavra do usuário:
+• Calcule e Imprima:
+• Quantas letras essa palavra tem?
+• Qual a primeira letra da palavra?
+• Qual a ultima letra da palavra?
+• Como é a palavra ao contrário?
+• DESAFIO: Será que é um palíndromo?
+• Exemplos: ARARA, MIRIM, reviver, OSSO, OMISSISSIMO, NATAN */
+
 public class PalavraMagica {
     public static Scanner teclado = new Scanner(System.in);
     public static String palavraS;

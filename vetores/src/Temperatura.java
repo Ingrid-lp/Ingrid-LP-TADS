@@ -1,8 +1,19 @@
 import java.util.Scanner;
 
+/*Crie um vetor com 6 temperaturas aferidas em um município (pode
+escolher seu preferido) desde a última quinta-feira (histórico de
+temperaturas)
+• Entrada: nome da cidade e 6 temperaturas
+• Ao final, Seu programa vai retornar:
+• Nome da cidade
+• Média de temperatura na semana;
+• Todas temperaturas registradas;
+• Maior temperatura registrada;
+• Menor temperatura registrada; */
+
 public class Temperatura 
 {
-    private static Scanner teclado = new Scanner(System.in);
+    public static Scanner teclado = new Scanner(System.in);
     static double[] temperatura;
     public static String cidade;
     public static double media, soma;
