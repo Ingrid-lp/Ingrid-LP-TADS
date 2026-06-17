@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-public class PalavraMagica 
-{
+public class PalavraMagica {
     public static Scanner teclado = new Scanner(System.in);
     public static String palavraS;
     public static char[] palavraV;
 
-    public static void main(String[] args) 
-    {
+    public static void main(String[] args) {
+        String invertida = "";
+
         System.out.println("Informe sua palavra mágica: ");
         palavraS = teclado.next();
 
@@ -19,16 +19,27 @@ public class PalavraMagica
 
         System.out.println("Tamanho da palavra: " + palavraV.length); // mostra o tamanho da palavra (vetor) em int
 
-        System.out.println("Primeira letra da palavra: " + palavraV[0]); // mostra a primeira letra da palavra (vetor) em char
+        System.out.println("Primeira letra da palavra: " + palavraV[0]); // mostra a primeira letra da palavra (vetor)
+                                                                         // em char
 
-        char u = palavraV[palavraV.length - 1]; // guarda a última letra da palavra (vetor) em char
+        // Última letra
+        System.out.println("Última letra da palavra: " + palavraV[palavraV.length - 1]);
 
-        System.out.println("Última letra da palavra: " + palavraV[u]); // mostra a última letra da palavra (vetor) em char
+        // Palavra ao contrário
+        System.out.print("Palavra ao contrário: ");
 
-        for(int i = u; i >= 0; i--)
-        {
-            System.out.println(palavraV[i]);
+        for (int i = palavraV.length - 1; i >= 0; i--) {
+            System.out.print(palavraV[i]);
+            invertida += palavraV[i];
         }
 
-    }    
+        System.out.println("\nSerá que é um palíndromo? ");
+
+        if (palavraS.equals(invertida)) {
+            System.out.println("É palíndromo");
+        } else {
+            System.out.println("Não é palíndromo");
+        }
+
+    }
 }
