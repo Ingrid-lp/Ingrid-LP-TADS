@@ -23,7 +23,7 @@ public class JogoDaVelha
             }
         }
     }
-    
+
     public static void imprimeVelha()
     {
         int L, C;
@@ -32,7 +32,7 @@ public class JogoDaVelha
         {
             for(C = 0; C < 3; C++)
             {
-                
+
             }
         }
     }

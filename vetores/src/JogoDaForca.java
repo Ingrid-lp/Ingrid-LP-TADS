@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class JogoDaForca 
+public class JogoDaForca
 {
     public static Scanner teclado = new Scanner(System.in);
     public static int vida = 5, opcao, encontrou = 0, faltam = 0, venceu = 0, jogarNovamente = 0;
@@ -145,7 +145,7 @@ public class JogoDaForca
                 System.out.println("     |");
                 System.out.println("=======");
                 break;
-            
+
             case 3:
                 System.out.println(" +---+");
                 System.out.println(" |   |");
@@ -155,7 +155,7 @@ public class JogoDaForca
                 System.out.println("     |");
                 System.out.println("=======");
                 break;
-            
+
             case 2:
                 System.out.println(" +---+");
                 System.out.println(" |   |");
@@ -213,7 +213,7 @@ public class JogoDaForca
             case 1:
                 System.out.println("Nova partida");
                 break;
-            
+
             case 2:
                 System.out.println("Até a próxima");
                 break;

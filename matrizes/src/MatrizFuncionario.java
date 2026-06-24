@@ -22,7 +22,7 @@ public class MatrizFuncionario
 
         getInformacoes();
     }
-    
+
     public static void setInformacoes()
     {
         System.out.println("Informe as 3 idades dos funcionários: ");
@@ -37,7 +37,7 @@ public class MatrizFuncionario
             funcionario[i][1] = teclado.nextInt();
         }
     }
-    
+
     public static void getInformacoes()
     {
         for (int l = 0; l < 3; l++) 
