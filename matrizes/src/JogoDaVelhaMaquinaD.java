@@ -1,9 +1,11 @@
 import java.util.Scanner;
+import java.util.Random;
 
-public class JogoDaVelha {
+public class JogoDaVelhaMaquinaD {
     public static char velha[][];
     public static Scanner teclado;
     public static int jogadas;
+    public static Random aleatorio = new Random();
 
     public static void main(String[] args) 
     {
@@ -13,20 +15,32 @@ public class JogoDaVelha {
 
         zerarVelha();
 
-        for(jogadas = 1; jogadas <= 9; jogadas++)
+        for(jogadas = 1; jogadas <= 5; jogadas++)
         {
             imprimeVelha();
 
-            jogar(Player);
+            jogar('X');
 
-            if(verificaVencedor(Player))
+            imprimeVelha();
+
+            if(verificaVencedor('X'))
             {
-                imprimeVelha();
-                System.out.println("\nJogador " + Player + " venceu!");
-                return; // encerra o programa
+                //imprimeVelha();
+                System.out.println("\nVocê venceu!");
+                return;
             }
 
-            Player = (Player == 'X') ? 'O' : 'X';
+            if(jogadas == 5)
+                break;
+
+            jogarMaquina();
+
+            if(verificaVencedor('O'))
+            {
+                //imprimeVelha();
+                System.out.println("\nA máquina venceu!");
+                return;
+            }
         }
 
         System.out.println("\nDeu velha! Empate!");
@@ -107,5 +121,39 @@ public class JogoDaVelha {
         }
 
         return false;
+    }
+
+    public static void jogarMaquina()
+    {
+        int L, C;
+        boolean existeCasaLivre = false;
+
+        // Verifica se ainda há casas livres
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                if(velha[i][j] == '.')
+                {
+                    existeCasaLivre = true;
+                }
+            }
+        }
+
+        if(!existeCasaLivre)
+        {
+            return;
+        }
+
+        do
+        {
+            L = aleatorio.nextInt(3);
+            C = aleatorio.nextInt(3);
+
+        } while(velha[L][C] != '.');
+
+        velha[L][C] = 'O';
+
+        System.out.println("\nMáquina jogou na posição: " + L + " " + C);
     }
 }

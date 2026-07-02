@@ -1,9 +1,21 @@
 import java.util.Scanner;
+import java.util.Random;
 
-public class JogoDaVelha {
+/*Implemente o jogo da velha utilizando matriz.
+char jogo[][] = new char[3][3];
+Permitir:
+- Jogador X escolhe linha coluna
+- Jogador O escolhe linha coluna
+- Exibir tabuleiro
+- Verificar vencedor
+-Jogar contra máquina (dummy)
+-Jogar contra máquina (xpert) */
+
+public class JogoDaVelhaMaquinaE {
     public static char velha[][];
     public static Scanner teclado;
     public static int jogadas;
+    public static Random aleatorio = new Random();
 
     public static void main(String[] args) 
     {
@@ -13,20 +25,32 @@ public class JogoDaVelha {
 
         zerarVelha();
 
-        for(jogadas = 1; jogadas <= 9; jogadas++)
+        for(jogadas = 1; jogadas <= 5; jogadas++)
         {
             imprimeVelha();
 
-            jogar(Player);
+            jogar('X');
 
-            if(verificaVencedor(Player))
+            imprimeVelha();
+
+            if(verificaVencedor('X'))
             {
-                imprimeVelha();
-                System.out.println("\nJogador " + Player + " venceu!");
-                return; // encerra o programa
+                //imprimeVelha();
+                System.out.println("\nVocê venceu!");
+                return;
             }
 
-            Player = (Player == 'X') ? 'O' : 'X';
+            if(jogadas == 5)
+                break;
+
+            jogarMaquina();
+
+            if(verificaVencedor('O'))
+            {
+                //imprimeVelha();
+                System.out.println("\nA máquina venceu!");
+                return;
+            }
         }
 
         System.out.println("\nDeu velha! Empate!");
@@ -107,5 +131,63 @@ public class JogoDaVelha {
         }
 
         return false;
+    }
+
+    public static void jogarMaquina()
+    {
+        int L, C;
+
+        // 1 - Tenta vencer
+        for(L = 0; L < 3; L++)
+        {
+            for(C = 0; C < 3; C++)
+            {
+                if(velha[L][C] == '.')
+                {
+                    velha[L][C] = 'O';
+
+                    if(verificaVencedor('O'))
+                    {
+                        System.out.println("\nMáquina jogou na posição: " + L + " " + C);
+                        return;
+                    }
+
+                    velha[L][C] = '.';
+                }
+            }
+        }
+
+        // 2 - Tenta bloquear o jogador
+        for(L = 0; L < 3; L++)
+        {
+            for(C = 0; C < 3; C++)
+            {
+                if(velha[L][C] == '.')
+                {
+                    velha[L][C] = 'X';
+
+                    if(verificaVencedor('X'))
+                    {
+                        velha[L][C] = 'O';
+                        System.out.println("\nMáquina jogou na posição: " + L + " " + C);
+                        return;
+                    }
+
+                    velha[L][C] = '.';
+                }
+            }
+        }
+
+        // 3 - Se não puder ganhar nem bloquear, joga aleatoriamente
+        do
+        {
+            L = aleatorio.nextInt(3);
+            C = aleatorio.nextInt(3);
+
+        } while(velha[L][C] != '.');
+
+        velha[L][C] = 'O';
+
+        System.out.println("\nMáquina jogou na posição: " + L + " " + C);
     }
 }
